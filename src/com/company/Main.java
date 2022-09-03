@@ -12,7 +12,7 @@ public class Main {
         try{
 
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "admin");
-            Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             ResultSet resultSet = statement.executeQuery("select * from people");
 
@@ -21,8 +21,6 @@ public class Main {
                 System.out.println(resultSet.getString("firstName"));
 
             }
-
-
 
 
 
